@@ -71,6 +71,16 @@ function buildUrl(path, params) {
 }
 
 export async function request(path, { method = 'GET', body, params, signal, raw = false } = {}) {
+  if (import.meta.env.VITE_DEMO) {
+    const { demoRequest } = await import('./demo');
+    try {
+      if (raw) throw new Error('File downloads are disabled in the public demo.');
+      return await demoRequest(path, { method, params });
+    } catch (e) {
+      throw new ApiError(e.message, { status: typeof e.cause === 'number' ? e.cause : 400 });
+    }
+  }
+
   const token = localStorage.getItem(TOKEN_KEY);
   const headers = {};
   if (token) headers.Authorization = `Bearer ${token}`;
