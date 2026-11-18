@@ -1,0 +1,1 @@
+{"entity_type":"WALLET","value":"0xf58b7511d00C66600d41Eae2b1feA0bdf7F2dA56","results":[{"adapter":"wallet","label":"Blockscout (Polygon Amoy) wallet lookup","simulated":false,"note":null,"cached":false,"available":true,"data":{"found":false,"reason":"NOTOK"},"duration_ms":352}],"any_live":true,"any_simulated":false}
